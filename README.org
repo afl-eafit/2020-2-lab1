@@ -1,4 +1,4 @@
-* Laboratory 1, 2020-2.
+* Laboratory 1, 2020-2
 In this repository, it can be found the modules necessary to solve the first
 laboratory for Automata and Formal Languages subject. In the =src= folder, a
 representation of a Deterministic Finite Automata is given in the file =DFA.hs=.
