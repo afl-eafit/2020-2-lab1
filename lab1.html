@@ -66,6 +66,39 @@
       Haskell distribution</a>.</p></li>
     </ul>
 
+    <h3>Examples</h3>
+    <p>Using the <tt>DFA.hs</tt> module in the above repository, this is what a
+      sample input-output looks like:</p>
+
+    <pre>
+      GHCi&gt; stringsOfDFA dfa0 0
+      0
+
+      GHCi&gt; stringsOfDFA dfa1 0
+      1
+
+      GHCi&gt; stringsOfDFA dfa1 10
+      0
+
+      GHCi&gt; stringsOfDFA dfa2 0
+      1
+
+      GHCi&gt; stringsOfDFA dfa2 3
+      27
+
+      GHCi&gt; stringsOfDFA dfa2 9
+      19683
+
+      GHCi&gt; stringsOfDFA dfa3 3
+      1
+
+      GHCi&gt; stringsOfDFA dfa3 4
+      0
+
+      GHCi&gt; stringsOfDFA dfa3 12
+      1
+    </pre>
+
     <h3>Clean Code (10%)</h3>
 
     <p>Before submitting your code, which includes your
