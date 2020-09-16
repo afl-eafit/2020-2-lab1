@@ -28,3 +28,34 @@ trans (q, q', c) (MkDFA q0 ts f) = MkDFA q0 ts' f
 -- | Adds a new accepting state @q@ to a DFA
 accept :: (Ord a, Ord s) => s -> DFA s a -> DFA s a
 accept q (MkDFA q0 ts fs) = MkDFA q0 ts (Set.insert q fs)
+
+{-| First automaton example. The language of this DFA does not contain any
+    words.-}
+dfa0 :: DFA Int Int
+dfa0 = initDFA 0
+
+{-| Second automaton example. This DFA represents the following language, that
+  only recognizes the empty word. -}
+dfa1 :: DFA Int Int
+dfa1 = accept 0 $ initDFA 0
+
+{-| Third automaton example. This DFA represents the language of the regex
+    L(dfa2) = (0 + 1 + 2)^*. -}
+dfa2 :: DFA Int Int
+dfa2 = trans (0, 0, 0) $
+       trans (0, 0, 1) $
+       trans (0, 0, 2) $
+       accept 0 $
+       initDFA 0
+
+{-| Last automaton example. This DFA represents the language of the regex
+    L(dfa3) = abc(abc)* -}
+dfa3 :: DFA Int Char
+dfa3 = trans (0, 1, 'a') $ trans (0, 2, 'b') $
+       trans (0, 2, 'c') $ trans (1, 2, 'a') $
+       trans (1, 3, 'b') $ trans (1, 2, 'c') $
+       trans (2, 2, 'a') $ trans (2, 2, 'b') $
+       trans (2, 2, 'c') $ trans (3, 2, 'a') $
+       trans (3, 2, 'b') $ trans (3, 4, 'c') $
+       trans (4, 1, 'a') $ trans (4, 2, 'b') $
+       trans (4, 2, 'c') $ accept 4 $ initDFA 0
