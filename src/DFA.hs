@@ -34,13 +34,13 @@ accept q (MkDFA q0 ts fs) = MkDFA q0 ts (Set.insert q fs)
 dfa0 :: DFA Int Int
 dfa0 = initDFA 0
 
-{-| Second automaton example. This DFA represents the following language, that
-  only recognizes the empty word. -}
+{-| Second automaton example. This DFA represents the language that only
+  recognizes the empty word. -}
 dfa1 :: DFA Int Int
 dfa1 = accept 0 $ initDFA 0
 
 {-| Third automaton example. This DFA represents the language of the regex
-    L(dfa2) = (0 + 1 + 2)^*. -}
+    L(dfa2) = (0 + 1 + 2)*. -}
 dfa2 :: DFA Int Int
 dfa2 = trans (0, 0, 0) $
        trans (0, 0, 1) $
