@@ -31,13 +31,20 @@ accept q (MkDFA q0 ts fs) = MkDFA q0 ts (Set.insert q fs)
 
 {-| First automaton example. The language of this DFA does not contain any
     words.-}
-dfa0 :: DFA Int Int
-dfa0 = initDFA 0
+dfa0 :: DFA Int String
+dfa0 = trans (0, 0, "(^o^)/") $
+       trans (0, 0, "(-_-)") $
+       initDFA 0
 
 {-| Second automaton example. This DFA represents the language that only
   recognizes the empty word. -}
-dfa1 :: DFA Int Int
-dfa1 = accept 0 $ initDFA 0
+dfa1 :: DFA Int String
+dfa1 = trans (0, 1, "(^o^)/") $
+       trans (0, 1, "(-_-)") $
+       trans (1, 1, "(^o^)/") $
+       trans (1, 1, "(-_-)") $
+       accept 0 $
+       initDFA 0
 
 {-| Third automaton example. This DFA represents the language of the regex
     L(dfa2) = (0 + 1 + 2)*. -}
